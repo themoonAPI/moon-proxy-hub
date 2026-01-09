@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moon•API Proxy Hub</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Ultraviolet Proxy (unblocked) -->
+    <script src="https://unpkg.com/@titaniumnetwork-dev/ultraviolet@latest/dist/uv.bundle.js"></script>
+    <script src="https://unpkg.com/@titaniumnetwork-dev/ultraviolet@latest/dist/uv.config.js"></script>
+    <script src="https://unpkg.com/@titaniumnetwork-dev/ultraviolet@latest/dist/uv.sw-handler.js"></script>
+    <script>__uv$config = { prefix: '/uv/service/', bare: 'https://uv.bare.titaniumnetwork.dev/', encodeUrl: Ultraviolet.codec.xor.encode, decodeUrl: Ultraviolet.codec.xor.decode, handler: '/uv/uv.handler.js', client: '/uv/uv.client.js', bundle: '/uv/uv.bundle.js', config: '/uv/uv.config.js', sw: '/uv/uv.sw.js' };</script>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Moon Logo" class="logo">
+        <h1>Moon•API Proxy Hub</h1>
+        <p>Welcome to the unblocked universe 🌙</p>
+    </header>
+
+    <main>
+        <section class="proxy">
+            <h2>Web Proxy</h2>
+            <input id="proxy-url" placeholder="Enter URL to proxy...">
+            <button onclick="proxySite()">Go</button>
+            <iframe id="proxy-frame" sandbox="allow-scripts allow-same-origin allow-popups allow-forms"></iframe>
+        </section>
+
+        <section class="games">
+            <h2>Games Hub</h2>
+            <div class="game-grid">
+                <iframe src="https://3kh0.github.io/v4/" allowfullscreen></iframe>
+                <!-- Add more game embeds -->
+            </div>
+        </section>
+
+        <section class="search">
+            <h2>URL Searcher</h2>
+            <input id="search-url" placeholder="Search or enter URL">
+            <button onclick="searchSite()">Search</button>
+        </section>
+
+        <section class="discord">
+            <h2>Join Discord</h2>
+            <a href="https://discord.gg/N478y92Mb5" target="_blank" class="discord-btn">Join Moon•API Server</a>
+        </section>
+    </main>
+
+    <script>
+    function proxySite() {
+        let url = document.getElementById('proxy-url').value.trim();
+        if (url) document.getElementById('proxy-frame').src = __uv$config.prefix + __uv$config.encodeUrl(url);
+    }
+    function searchSite() {
+        let query = document.getElementById('search-url').value.trim();
+        if (query) window.open('https://www.google.com/search?q=' + encodeURIComponent(query), '_blank');
+    }
+    </script>
+</body>
+</html>
